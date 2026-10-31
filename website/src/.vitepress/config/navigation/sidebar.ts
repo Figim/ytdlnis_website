@@ -1,85 +1,121 @@
 import type { DefaultTheme } from 'vitepress'
 
-const sidebar: DefaultTheme.SidebarMulti = {
-  '/docs/': defaultSidebar(),
-  '/yt-dlp/': defaultSidebar(),
-  '/changelogs/': defaultSidebar(),
-  '/news/': defaultSidebar(),
-  '/sandbox/': defaultSidebar(),
+// Sidebar labels per locale, keyed by the English label. Missing keys fall back to English.
+const sq: Record<string, string> = {
+  'Changelogs': 'Ndryshimet',
+  'Frequently Asked Questions': 'Pyetjet më të shpeshta',
+  'General': 'Të përgjithshme',
+  'Revanced Integration': 'Integrimi me Revanced',
+  'Guides': 'Udhëzuesit',
+  'Getting started': 'Fillimi',
+  'Home': 'Kreu',
+  'Share Menu': 'Menyja e ndarjes',
+  'Download Card': 'Karta e shkarkimit',
+  'Playlists & Multiple Items': 'Lista luajtjeje dhe shumë artikuj',
+  'Formats': 'Formatet',
+  'Downloads (History)': 'Shkarkimet (Historiku)',
+  'Download Queue': 'Radha e shkarkimeve',
+  'Observe Sources': 'Vëzhgo burimet',
+  'Command Templates': 'Shabllonet e komandave',
+  'Filename Templates': 'Shabllonet e emrit të skedarit',
+  'Subtitle Languages': 'Gjuhët e titrave',
+  'Extra Commands': 'Komandat shtesë',
+  'Terminal': 'Terminali',
+  'Download Logs': 'Regjistrat e shkarkimeve',
+  'Packages': 'Paketat',
+  'Settings': 'Cilësimet',
+  'Folders': 'Dosjet',
+  'Downloads': 'Shkarkimet',
+  'Processing': 'Përpunimi',
+  'Updating': 'Përditësimi',
+  'Advanced': 'Të avancuara',
+  'Backups': 'Kopjet rezervë',
+  'Troubleshooting': 'Zgjidhja e problemeve',
+  'Common issues': 'Problemet e zakonshme',
+  'Diagnosis': 'Diagnostikimi',
 }
 
-function defaultSidebar(): DefaultTheme.SidebarItem[] {
+function sidebarFor(prefix = '', labels: Record<string, string> = {}): DefaultTheme.SidebarMulti {
+  const items = defaultSidebar(prefix, labels)
+  return Object.fromEntries(
+    ['/docs/', '/yt-dlp/', '/changelogs/', '/news/', '/sandbox/'].map(path => [`${prefix}${path}`, items]),
+  )
+}
+
+function defaultSidebar(p: string, labels: Record<string, string>): DefaultTheme.SidebarItem[] {
+  const t = (text: string) => labels[text] ?? text
+
   return [
     {
       items: [
         {
           text: 'YT-DLP',
-          link: '/yt-dlp/',
+          link: `${p}/yt-dlp/`,
         },
         {
-          text: 'Changelogs',
-          link: '/changelogs/',
+          text: t('Changelogs'),
+          link: `${p}/changelogs/`,
         },
       ],
     },
     {
-      text: 'Frequently Asked Questions',
+      text: t('Frequently Asked Questions'),
       items: [
-        { text: 'General', link: '/docs/faq/general' },
-        { text: 'Revanced Integration', link: '/docs/faq/revanced' },
+        { text: t('General'), link: `${p}/docs/faq/general` },
+        { text: t('Revanced Integration'), link: `${p}/docs/faq/revanced` },
       ],
     },
     {
-      text: 'Guides',
+      text: t('Guides'),
       items: [
         {
-          text: 'Getting started',
-          link: '/docs/guides/getting-started',
+          text: t('Getting started'),
+          link: `${p}/docs/guides/getting-started`,
         },
-        { text: 'Home', link: '/docs/guides/home' },
-        { text: 'Share Menu', link: '/docs/guides/share-menu' },
-        { text: 'Download Card', link: '/docs/guides/download-card' },
-        { text: 'Playlists & Multiple Items', link: '/docs/guides/playlists' },
-        { text: 'Formats', link: '/docs/guides/formats' },
-        { text: 'Downloads (History)', link: '/docs/guides/downloads' },
-        { text: 'Download Queue', link: '/docs/guides/download-queue' },
-        { text: 'Observe Sources', link: '/docs/guides/observe-sources' },
-        { text: 'Command Templates', link: '/docs/guides/command-templates' },
-        { text: 'Filename Templates', link: '/docs/guides/filename-templates' },
-        { text: 'SponsorBlock', link: '/docs/guides/sponsorblock' },
-        { text: 'Subtitle Languages', link: '/docs/guides/subtitle-languages' },
-        { text: 'Extra Commands', link: '/docs/guides/extra-commands' },
-        { text: 'Cookies', link: '/docs/guides/cookies' },
-        { text: 'YouTube', link: '/docs/guides/youtube' },
-        { text: 'Terminal', link: '/docs/guides/terminal' },
-        { text: 'Download Logs', link: '/docs/guides/logs' },
-        { text: 'Packages', link: '/docs/guides/packages' },
+        { text: t('Home'), link: `${p}/docs/guides/home` },
+        { text: t('Share Menu'), link: `${p}/docs/guides/share-menu` },
+        { text: t('Download Card'), link: `${p}/docs/guides/download-card` },
+        { text: t('Playlists & Multiple Items'), link: `${p}/docs/guides/playlists` },
+        { text: t('Formats'), link: `${p}/docs/guides/formats` },
+        { text: t('Downloads (History)'), link: `${p}/docs/guides/downloads` },
+        { text: t('Download Queue'), link: `${p}/docs/guides/download-queue` },
+        { text: t('Observe Sources'), link: `${p}/docs/guides/observe-sources` },
+        { text: t('Command Templates'), link: `${p}/docs/guides/command-templates` },
+        { text: t('Filename Templates'), link: `${p}/docs/guides/filename-templates` },
+        { text: 'SponsorBlock', link: `${p}/docs/guides/sponsorblock` },
+        { text: t('Subtitle Languages'), link: `${p}/docs/guides/subtitle-languages` },
+        { text: t('Extra Commands'), link: `${p}/docs/guides/extra-commands` },
+        { text: 'Cookies', link: `${p}/docs/guides/cookies` },
+        { text: 'YouTube', link: `${p}/docs/guides/youtube` },
+        { text: t('Terminal'), link: `${p}/docs/guides/terminal` },
+        { text: t('Download Logs'), link: `${p}/docs/guides/logs` },
+        { text: t('Packages'), link: `${p}/docs/guides/packages` },
         {
-          text: 'Settings',
-          link: '/docs/guides/settings/',
+          text: t('Settings'),
+          link: `${p}/docs/guides/settings/`,
           collapsed: true,
           items: [
-            { text: 'General', link: '/docs/guides/settings/general' },
-            { text: 'Folders', link: '/docs/guides/settings/folders' },
-            { text: 'Downloads', link: '/docs/guides/settings/downloads' },
-            { text: 'Processing', link: '/docs/guides/settings/processing' },
-            { text: 'Updating', link: '/docs/guides/settings/updating' },
-            { text: 'Advanced', link: '/docs/guides/settings/advanced/' },
+            { text: t('General'), link: `${p}/docs/guides/settings/general` },
+            { text: t('Folders'), link: `${p}/docs/guides/settings/folders` },
+            { text: t('Downloads'), link: `${p}/docs/guides/settings/downloads` },
+            { text: t('Processing'), link: `${p}/docs/guides/settings/processing` },
+            { text: t('Updating'), link: `${p}/docs/guides/settings/updating` },
+            { text: t('Advanced'), link: `${p}/docs/guides/settings/advanced/` },
           ],
         },
-        { text: 'Backups', link: '/docs/guides/backups' },
+        { text: t('Backups'), link: `${p}/docs/guides/backups` },
         {
-          text: 'Troubleshooting',
-          link: '/docs/guides/troubleshooting/',
+          text: t('Troubleshooting'),
+          link: `${p}/docs/guides/troubleshooting/`,
           collapsed: true,
           items: [
             {
-              text: 'Common issues',
-              link: '/docs/guides/troubleshooting/common-issues',
+              text: t('Common issues'),
+              link: `${p}/docs/guides/troubleshooting/common-issues`,
             },
             {
-              text: 'Diagnosis',
-              link: '/docs/guides/troubleshooting/diagnosis',
+              text: t('Diagnosis'),
+              link: `${p}/docs/guides/troubleshooting/diagnosis`,
             },
           ],
         },
@@ -88,4 +124,6 @@ function defaultSidebar(): DefaultTheme.SidebarItem[] {
   ]
 }
 
-export default sidebar
+export const sidebarSq = sidebarFor('/sq', sq)
+
+export default sidebarFor()

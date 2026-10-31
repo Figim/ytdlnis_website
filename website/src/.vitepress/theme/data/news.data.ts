@@ -14,7 +14,7 @@ export default createContentLoader('news/*.md', {
   excerpt: true,
   transform(articles) {
     return articles
-      .filter(({ url }) => url !== '/news/')
+      .filter(({ url }) => url !== '/news/' && !/\.[a-z]{2}$/.test(url)) // skip index and translations like `index.sq.md`
       .map(
         ({ frontmatter, url }) =>
           <News>{

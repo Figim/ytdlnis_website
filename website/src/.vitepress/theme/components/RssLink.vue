@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { IconRssBox } from '@iconify-prerendered/vue-mdi'
+import { useStrings } from '../i18n'
+
+const t = useStrings()
 </script>
 
 <template>
-  <a href="/feed.rss" class="rss" title="RSS feed for the news archive" target="_blank">
+  <a href="/feed.rss" class="rss" :title="t.rssTitle" target="_blank">
     <IconRssBox />
     <span>RSS feed</span>
   </a>

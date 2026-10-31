@@ -23,7 +23,8 @@ async function generateFeed(config: SiteConfig, hostname: string) {
   }).load()
 
   // Filter everything that"s not of type `article` (e.g. index.md)
-  const filteredPosts = posts.filter(post => post.frontmatter.type === 'article')
+  // and translations like `post.sq.md`, so the feed stays English
+  const filteredPosts = posts.filter(post => post.frontmatter.type === 'article' && !/\.[a-z]{2}$/.test(post.url))
 
   filteredPosts.sort((a, b) => +new Date(b.frontmatter.date as string) - +new Date(a.frontmatter.date as string))
 

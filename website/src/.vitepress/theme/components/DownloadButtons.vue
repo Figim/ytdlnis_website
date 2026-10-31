@@ -3,6 +3,7 @@
 
 import { computed, onMounted, ref } from 'vue'
 import { data as release } from '../data/release.data'
+import { useStrings } from '../i18n'
 
 const architectures = [
   { id: 'arm64-v8a', label: 'arm64-v8a (64-bit ARM)' },
@@ -20,6 +21,8 @@ function getBuildAssets(assets) {
 function findAsset(assets, arch: string) {
   return getBuildAssets(assets).find(a => a.name.includes(`-${arch}-`))
 }
+
+const t = useStrings()
 
 const navigatorValue = ref(null)
 
@@ -75,25 +78,16 @@ function handleAnalytics(type: 'preview' | 'stable') {
   <div>
     <div v-if="!isAndroid && !isPC" class="custom-block danger">
       <p class="custom-block-title">
-        Unsupported operating system
+        {{ t.unsupportedOs }}
       </p>
-      <p>
-        <strong>YTDLnis</strong> is an <strong>Android app</strong> only.
-        Use an <strong>Android device</strong> to download and install the app.
-      </p>
+      <p v-html="t.androidOnly" />
     </div>
     <div v-if="!isAndroid" class="custom-block warning">
       <p class="custom-block-title">
-        Caution
+        {{ t.caution }}
       </p>
-      <p>
-        Any app for any operating systems other than Android called
-        <strong>YTDLnis</strong> is not affiliated with this project.
-      </p>
-      <blockquote>
-        For more information, read the
-        <a href="/docs/faq/general">General FAQ</a>.
-      </blockquote>
+      <p v-html="t.notAffiliated" />
+      <blockquote v-html="t.moreInfo" />
     </div>
     <div class="download-buttons">
       <a
@@ -103,13 +97,13 @@ function handleAnalytics(type: 'preview' | 'stable') {
         @click="handleAnalytics('stable')"
       >
         <IconDownload />
-        <span class="text">Stable</span>
+        <span class="text">{{ t.stable }}</span>
         <span class="version">{{ downloadInformation.stable.tagName }}  ({{ getDeviceArchitecture() }})</span>
       </a>
     </div>
     <div class="other-architectures">
       <button class="other-toggle" type="button" @click="showOthers = !showOthers">
-        {{ showOthers ? 'Hide other architectures' : 'Other architectures' }}
+        {{ showOthers ? t.hideOtherArchitectures : t.otherArchitectures }}
       </button>
       <ul v-if="showOthers">
         <li v-for="arch in downloadInformation.stable.others" :key="arch.id">
@@ -117,9 +111,7 @@ function handleAnalytics(type: 'preview' | 'stable') {
         </li>
       </ul>
     </div>
-    <span class="version-disclaimer">
-      Requires <strong>Android 7.0</strong> or higher.
-    </span>
+    <span class="version-disclaimer" v-html="t.requiresAndroid" />
   </div>
 </template>
 

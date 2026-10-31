@@ -4,9 +4,10 @@ import { defineConfig, loadEnv } from 'vitepress'
 import ElementPlus from 'unplugin-element-plus/vite'
 
 import markdownConfig from './config/markdownConfig'
+import { localizePath } from './config/scripts/languages'
 
 // For use with loading Markdown plugins
-import themeConfig from './config/themeConfig'
+import themeConfig, { themeConfigSq } from './config/themeConfig'
 
 // Theme related config
 import headConfig from './config/headConfig'
@@ -39,6 +40,16 @@ export default defineConfig({
   head: headConfig,
   markdown: markdownConfig,
   themeConfig,
+  rewrites: localizePath,
+  locales: {
+    root: { label: 'English', lang: 'en' },
+    sq: {
+      label: 'Shqip',
+      lang: 'sq',
+      description: 'Shkarkues i plotë që përdor yt-dlp në pajisjen tënde Android.',
+      themeConfig: themeConfigSq,
+    },
+  },
   transformHead: async context => generateMeta(context, hostname),
   buildEnd: async (context) => {
     generateFeed(context, hostname)

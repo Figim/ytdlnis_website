@@ -4,8 +4,10 @@ import { useData } from 'vitepress'
 
 import VPIconMoon from 'vitepress/dist/client/theme-default/components/icons/VPIconMoon.vue'
 import VPIconSun from 'vitepress/dist/client/theme-default/components/icons/VPIconSun.vue'
+import { useStrings } from '../i18n'
 
 const { isDark } = useData()
+const t = useStrings()
 
 const toggleAppearance = inject('toggle-appearance', () => {
   isDark.value = !isDark.value
@@ -23,7 +25,7 @@ onMounted(() => {
   <button
     type="button"
     role="switch"
-    title="Toggle dark mode"
+    :title="t.toggleDarkMode"
     class="CustomSwitchAppearance"
     :aria-checked="isDark"
     :data-view-transition="supportsViewTransition"

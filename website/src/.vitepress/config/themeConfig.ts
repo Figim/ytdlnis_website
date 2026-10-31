@@ -1,7 +1,7 @@
 import type { DefaultTheme } from 'vitepress'
 
-import nav from './navigation/navbar'
-import sidebar from './navigation/sidebar'
+import nav, { navSq } from './navigation/navbar'
+import sidebar, { sidebarSq } from './navigation/sidebar'
 
 const themeConfig: DefaultTheme.Config = {
   logo: {
@@ -56,7 +56,58 @@ const themeConfig: DefaultTheme.Config = {
 
   search: {
     provider: 'local',
+    options: {
+      locales: {
+        sq: {
+          translations: {
+            button: { buttonText: 'Kërko', buttonAriaLabel: 'Kërko' },
+            modal: {
+              displayDetails: 'Shfaq listën e detajuar',
+              resetButtonTitle: 'Pastro kërkimin',
+              backButtonTitle: 'Mbyll kërkimin',
+              noResultsText: 'Nuk u gjet asnjë rezultat për',
+              footer: {
+                selectText: 'për të zgjedhur',
+                navigateText: 'për të lëvizur',
+                closeText: 'për të mbyllur',
+              },
+            },
+          },
+        },
+      },
+    },
   },
+}
+
+// Locale themeConfig replaces top-level keys, so anything with text is repeated here.
+export const themeConfigSq: DefaultTheme.Config = {
+  nav: navSq,
+  sidebar: sidebarSq,
+
+  footer: {
+    message: themeConfig.footer!.message!
+      .replace('href="/privacy/"', 'href="/sq/privacy/"')
+      .replace('Privacy policy', 'Politika e privatësisë')
+      .replace('Powered by', 'Mundësuar nga'),
+    copyright: themeConfig.footer!.copyright,
+  },
+
+  editLink: {
+    pattern: themeConfig.editLink!.pattern,
+    text: 'Na ndihmo ta përmirësojmë këtë faqe',
+  },
+
+  lastUpdated: {
+    text: 'Përditësuar së fundi',
+    formatOptions: themeConfig.lastUpdated!.formatOptions,
+  },
+
+  outline: { level: [2, 3], label: 'Në këtë faqe' },
+  docFooter: { prev: 'Faqja e mëparshme', next: 'Faqja tjetër' },
+  darkModeSwitchLabel: 'Pamja',
+  sidebarMenuLabel: 'Menyja',
+  returnToTopLabel: 'Kthehu në krye',
+  langMenuLabel: 'Ndrysho gjuhën',
 }
 
 export default themeConfig

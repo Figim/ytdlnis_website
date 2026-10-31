@@ -17,4 +17,21 @@ const nav: DefaultTheme.NavItem[] = [
   },
 ]
 
+export const navSq: DefaultTheme.NavItem[] = [
+  {
+    text: 'Ndryshimet',
+    link: '/sq/changelogs/',
+  },
+  {
+    text: 'Dokumentacioni',
+    link: '/sq/docs/guides/getting-started',
+    activeMatch: '/sq/docs/',
+  },
+  {
+    text: 'Lajme',
+    link: '/sq/news/',
+    activeMatch: '/sq/news/',
+  },
+]
+
 export default nav

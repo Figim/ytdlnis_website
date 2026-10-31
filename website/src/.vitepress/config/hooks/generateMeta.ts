@@ -71,7 +71,8 @@ function generateMeta(context: TransformContext, hostname: string) {
     ])
   }
   else {
-    const url = pageData.filePath.replace('index.md', '').replace('.md', '')
+    // relativePath is the served path (after rewrites), filePath is the source file
+    const url = pageData.relativePath.replace('index.md', '').replace('.md', '')
     const imageUrl = `${url}/__og_image__/og.png`.replace(/\/\//g, '/').replace(/^\//, '')
 
     head.push(['meta', { property: 'og:image', content: `${hostname}/${imageUrl}` }])
@@ -127,7 +128,8 @@ function generateMeta(context: TransformContext, hostname: string) {
     ])
   }
 
-  return head
+  // Pages without frontmatter (e.g. the 404 page) leave values undefined, which VitePress can't render.
+  return head.filter(([, attrs]) => Object.values(attrs ?? {}).every(v => v !== undefined))
 }
 
 export default generateMeta

@@ -1,11 +1,17 @@
 <script setup lang="ts">
 import { IconChevronRight } from '@iconify-prerendered/vue-mdi'
+import { computed } from 'vue'
+import { useData } from 'vitepress'
 import { data as newsList } from '../data/news.data'
+import { useStrings } from '../i18n'
 
-const dateFormatter = new Intl.DateTimeFormat('en', {
+const { lang } = useData()
+const t = useStrings()
+
+const dateFormatter = computed(() => new Intl.DateTimeFormat(lang.value, {
   dateStyle: 'medium',
   timeZone: 'UTC',
-})
+}))
 
 function formatDate(date: string) {
   const [year, month, day] = date
@@ -13,7 +19,7 @@ function formatDate(date: string) {
     .split('-')
     .map(number => Number.parseInt(number, 10))
   const utcDate = Date.UTC(year, month - 1, day)
-  return dateFormatter.format(utcDate)
+  return dateFormatter.value.format(utcDate)
 }
 </script>
 
@@ -37,7 +43,7 @@ function formatDate(date: string) {
     </div>
     <p>{{ news.description }}</p>
     <div class="readPrompt" aria-hidden="true">
-      <span>Read article</span>
+      <span>{{ t.readArticle }}</span>
       <IconChevronRight />
     </div>
   </article>

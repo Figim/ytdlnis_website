@@ -1,18 +1,24 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useData } from 'vitepress'
 import MarkdownIt from 'markdown-it'
 import { data as changelogs } from '../data/changelogs.data'
+import { useStrings } from '../i18n'
 import Contributors from './Contributors.vue'
+
+const { lang } = useData()
+const t = useStrings()
 
 const md = new MarkdownIt()
 
 function renderMarkdown(string: string | null | undefined) {
-  const body = string ?? 'No changelog provided.'
+  const body = string ?? t.value.noChangelog
   return md.render(body)
 }
 
-const dateFormatter = new Intl.DateTimeFormat('en', {
+const dateFormatter = computed(() => new Intl.DateTimeFormat(lang.value, {
   dateStyle: 'medium',
-})
+}))
 </script>
 
 <template>
@@ -27,7 +33,7 @@ const dateFormatter = new Intl.DateTimeFormat('en', {
       >
         {{ release.tag_name.substring(1) }}
       </a>
-      <Badge v-if="index === 0" type="tip" text="Latest" />
+      <Badge v-if="index === 0" type="tip" :text="t.latest" />
       <a
         class="header-anchor"
         :href="index === 0 ? '#latest' : `#${release.tag_name}`"

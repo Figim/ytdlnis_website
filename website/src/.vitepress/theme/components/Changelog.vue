@@ -2,10 +2,13 @@
 import { computed, toRefs } from 'vue'
 import MarkdownIt from 'markdown-it'
 import { type AppRelease, data as release } from '../data/release.data'
+import { useStrings } from '../i18n'
 import Contributors from './Contributors.vue'
 
 const props = defineProps<{ type: keyof AppRelease }>()
 const { type } = toRefs(props)
+
+const t = useStrings()
 
 const md = new MarkdownIt()
 
@@ -22,7 +25,7 @@ const changelog = computed(() => {
   <div class="changelog">
     <header>
       <IconNewspaperVariant />
-      <h2>Changelog</h2>
+      <h2>{{ t.changelog }}</h2>
     </header>
     <div v-html="changelog" />
     <Contributors
@@ -33,9 +36,9 @@ const changelog = computed(() => {
   </div>
   <div class="fullChangelog">
     <p>
-      View the full release
+      {{ t.viewFullRelease }}
       <a href="https://github.com/deniscerri/ytdlnis/releases/latest" target="_blank" rel="noopener">
-        here
+        {{ t.here }}
       </a>
     </p>
   </div>

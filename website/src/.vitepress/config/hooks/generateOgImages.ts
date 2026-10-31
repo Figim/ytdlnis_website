@@ -5,6 +5,7 @@ import { createContentLoader } from 'vitepress'
 import type { ContentData, SiteConfig } from 'vitepress'
 import { type SatoriOptions, satoriVue } from 'x-satori/vue'
 import { renderAsync } from '@resvg/resvg-js'
+import { localizePath } from '../scripts/languages'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const __fonts = resolve(__dirname, '../../fonts')
@@ -62,6 +63,7 @@ interface GenerateImagesOptions {
 }
 
 function getDir(url: string) {
+  url = url.replace(/^\/[a-z]{2}\//, '/') // drop the locale prefix, e.g. `/sq/`
   if (url.startsWith('/docs/faq/'))
     return 'FAQ'
   else if (url.startsWith('/docs/guides/'))
@@ -73,7 +75,11 @@ function getDir(url: string) {
 }
 
 async function generateImage({ page, template, outDir, fonts }: GenerateImagesOptions) {
-  const { frontmatter, url } = page
+  const { frontmatter } = page
+  // The content loader ignores rewrites, so map its source-based URL to the served one.
+  const url = page.url.endsWith('/')
+    ? page.url
+    : `/${localizePath(`${page.url.slice(1)}.md`)}`.replace(/(?:index)?\.md$/, '')
 
   const options: SatoriOptions = {
     width: 1200,
