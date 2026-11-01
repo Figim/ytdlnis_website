@@ -36,10 +36,10 @@ Xeyr, yt-dlp bunu dəstəkləmir. Çünki Spotify DRM ilə qorunan bir çox xidm
 **YTDLnis** video yayımı üçün deyil, video/audio axınlarını yükləmək üçün nəzərdə tutulub.
 
 ## Yükləmələrim harada saxlanılır?
-<nav to="folders"> bölməsində təyin etdiyiniz audio və video qovluqlarında. Tamamlanmış yükləmələr faylı aça və ya onun fayl yolunu görə biləcəyiniz [Yükləmələr](/docs/guides/downloads) sekmasında siyahıya alınır.
+<nav to="folders"> bölməsində təyin etdiyiniz audio və video qovluqlarında. Tamamlanmış yükləmələr faylı aça və ya onun fayl yolunu görə biləcəyiniz [Yükləmələr](/docs/guides/downloads) bölməsində siyahıya alınır.
 
 ## Bütöv pleylist və ya kanalı yükləyə bilərəm?
-Bəli. Keçidi yapışdırın və elementləri seçin. [Pleylistlər və Çoxlu Elementlər](/docs/guides/playlists) bölməsinə baxın. Yeni yüklənən məzmunları avtomatik yükləməyə davam etmək üçün [Mənbələri İzləyin](/docs/guides/observe-sources) funksiyasından istifadə edin.
+Bəli. Keçidi yapışdırın və elementləri seçin. [Pleylistlər və Çoxlu Elementlər](/docs/guides/playlists) bölməsinə baxın. Yeni yüklənən məzmunları avtomatik yükləməyə davam etmək üçün [Mənbələri müşahidə et](/docs/guides/observe-sources) funksiyasından istifadə edin.
 
 ## Videonun yalnız bir hissəsini yükləyə bilərəm?
 Bəli, [Yükləmə Kartındakı](/docs/guides/download-card#cutting) kəsmə xüsusiyyəti ilə. Bir neçə kəsim edə və ya fəsillərə görə bölə bilərsiniz.
@@ -48,7 +48,7 @@ Bəli, [Yükləmə Kartındakı](/docs/guides/download-card#cutting) kəsmə xü
 Bəli. `Audio` bölməsini seçin və konteynerdə `mp3` seçin. Nəzərə alın ki, YouTube-da mp3 faylları yoxdur, tətbiq `m4a` və ya `opus` formatından çevirir, buna görə də keyfiyyət orijinalla müqayisədə daha yaxşı olmayacaq.
 
 ## Yükləmələri planlaşdıra bilərəm?
-Bəli. [Yükləmə Kartında](/docs/guides/download-card) tarix və vaxtı seçmək üçün planlaşdırma düyməsini istifadə edin. Həmçinin <nav to="downloads"> bölməsində `Cədvəl üzrə yüklə` funksiyası ilə yükləmələri müəyyən bir vaxt aralığı ilə məhdudlaşdıra bilərsiniz.
+Bəli. [Yükləmə Kartında](/docs/guides/download-card) tarix və vaxtı seçmək üçün planlaşdırma düyməsini istifadə edin. Həmçinin <nav to="downloads"> bölməsində `Plan üzrə yükləmə` funksiyası ilə yükləmələri müəyyən bir vaxt aralığı ilə məhdudlaşdıra bilərsiniz.
 
 ## Arxa fonda / eyni anda çoxlu yükləmə edə bilərəm?
 Bəli. Yükləmələr arxa fonda icra olunur və `Eyni vaxtda yükləmələr` funksiyası ilə eyni anda bir neçəsini işlədə bilərsiniz. [Yükləmə Növbəsi](/docs/guides/download-queue) bölməsinə baxın.
@@ -74,9 +74,9 @@ Xeyr. [Məxfilik siyasətini](/privacy/) oxuyun.
 Bəli! Tərcümələr [Weblate](https://hosted.weblate.org/engage/ytdlnis/) üzərindən edilir.
 
 ## Hansı yt-dlp buraxılışını seçməliyəm?
-<i>Daha çox ➔ Parametrlər ➔ Yeniləmə ➔ yt-dlp Mənbəyi</i>
+<i>Daha çox ➔ Tənzimləmələr ➔ Yenilənmə ➔ yt-dlp Mənbəyi</i>
 
-- Stabil (standart), tətbiqdən çox asılı deyilsinizsə və ya çox saytdan yükləməmirsinizsə bunu seçin.
+- Stabil (standart), tətbiqdən çox asılı deyilsinizsə və ya çox saytdan yükləmirsinizsə bunu seçin.
 - Nightly, balanslaşdırılmış sabitliyə malikdir və əksər istifadəçilər üçün tövsiyə olunur. Əksər hallarda stabil buraxılışda olmayan düzəlişlərin çoxunu ehtiva edir.
 - Master, ən az stabil olanıdır, lakin nightly buraxılışı ilə müqayisədə ən son düzəlişlər və/və ya əlavələrlə gəlir. Yalnız qabaqcıl istifadəçilər üçün və ya zəruri olduqda tövsiyə olunur.
 
