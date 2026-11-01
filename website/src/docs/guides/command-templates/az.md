@@ -31,7 +31,7 @@ Bu yükləmələr üçün standart qovluq <nav to="folders"> bölməsində təyi
 
 ## Şablonların idarə edilməsi
 
-- Toxunaraq şablonu **Düzəliş edin** və ya **Silin**. Şablonlar üçün sürüşdürmə jestləri aktivdirso, üzərində sürüşdürərək əməliyyat edə bilərsiniz.
+- Toxunaraq şablonu **Düzəliş edin** və ya **Silin**. Şablonlar üçün sürüşdürmə jestləri aktivdirsə, üzərində sürüşdürərək əməliyyat edə bilərsiniz.
 - Alətlər panelindən şablonlarınızı **Axtarın**.
 
 ### Şablon parametrləri
@@ -43,7 +43,7 @@ Bu yükləmələr üçün standart qovluq <nav to="folders"> bölməsində təyi
 | **Başlıq** və **Məzmun** | Şablonun adı və yt-dlp arqumentləri. |
 | **Üstünlük verilən əmr şablonu** | Yükləmə kartının Əmr tabında susmaya görə seçilir. |
 | **Əlavə əmr** | Şablonu hər bir audio və/və ya video yükləməsinə əlavə edir. `Audio`, `Video` və ya hər ikisini seçə bilərsiniz. |
-| **Məlumatların alınması** | Tətbiq məlumatları əldə edərkən şablonu əlavə edir. <nav to="advanced"> bölməsində `Məlumat almaq üçün əlavə əmr` aktiv olmalıdır. |
+| **Məlumatların alınması** | Tətbiq məlumatları əldə edərkən şablonu əlavə edir. <nav to="advanced"> bölməsində `Məlumat alınması əlavə əmri` aktiv olmalıdır. |
 | **URL Regex** | Şablonu (əlavə əmr kimi) yalnız bu müntəzəm ifadələrdən (regex) birinə uyğun gələn linklər üçün istifadə edir. Məsələn, `youtube\.com` onu yalnız YouTube linkləri ilə məhdudlaşdırır. |
 | **Qısayollar** | Məzmuna qısayollarınızı tez daxil edin. |
 
@@ -57,7 +57,7 @@ Kartın həmin tabda açılmasını istəyirsinizsə, <nav to="downloads"> bölm
 
 Bu seçim aktiv olduqda, hər bir yükləmə öz konfiqurasiyası ilə yanaşı bu əmri də sonuna əlavə edəcək. Baxın: [Əlavə Əmrlər](/docs/guides/extra-commands).
 
-## Məlumatların Alınması üçün Əlavə Əmr (Qabaqcıl)
+## Məlumatların Alınması Əlavə Əmri (Qabaqcıl)
 
 Bu seçim susmaya görə görünmür, lakin onu qabaqcıl tənzimləmələrdə aktivləşdirə bilərsiniz. Əslində tətbiq məlumat toplama prosesi zamanı bu əmr şablonunu əlavə edir. Məlumatların alınması tətbiq tərəfindən yerinə yetirildiyi və istifadəçi tərəfindən konfiqurasiya edilə bilmədiyi üçün qabaqcıl istifadəçilər üçün bəzi hallarda faydalıdır.
 
@@ -72,9 +72,9 @@ Onları göstərildiyi hər yerdə qısayollar düyməsindən yaradın, məsəl�
 - video/audio yükləməsinə əlavə əmr əlavə etməyə çalışarkən
 - terminal əmri yazmağa çalışarkən
 
-## Müqəvaya kopyala / Şablonları idxal et
+## Buferə kopyala / Şablonları idxal et
 
-Bütün əmr şablonlarınızı JSON obyekti kimi müqəvaya (clipboard) ixrac etmək üçün bu funksiyadan istifadə edə bilərsiniz.
-Bu obyekti YTDLnis quraşdırılmış hər kəslə bölüşə bilərsiniz. Onların yalnız bunu müqəvaya kopyalaması və şablonları idxal et düyməsini sıxması kifayətdir. Çox sadədir.
+Bütün əmr şablonlarınızı JSON obyekti kimi buferə ixrac etmək üçün bu funksiyadan istifadə edə bilərsiniz.
+Bu obyekti YTDLnis quraşdırılmış hər kəslə bölüşə bilərsiniz. Onların yalnız bunu buferə kopyalaması və şablonları idxal et düyməsini sıxması kifayətdir. Çox sadədir.
 
-Şablonlar və qısayollar [yedəkləmələrin](/docs/guides/backups) də bir hissəsidir.
+Şablonlar və qısayollar [nüsxələmələrin](/docs/guides/backups) də bir hissəsidir.
